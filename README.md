@@ -64,7 +64,7 @@ ii. Type “pip install pyserial” and hit enter
 iii. Type “pip install pandas” and hit enter
 iv. Type “pip install openpyxl” and hit enter
 
-Go to Arduino IDE and paste the code mentioned in '''“excel_esp.ino”''' in the drive link provided
+Go to Arduino IDE and paste the code mentioned in “excel_esp.ino” in the drive link provided
 Here there are only 2 changes in the code at lines 32 and 33 where you have to replace the text inside the double quotes to your WiFi/Hotspot name and password where it’s mentioned
 Click on the tick mark icon on the top-left of the screen to check the code for errors, once confirmed that the code is error-free, creat a folder on your Desktop screen > Go inside that folder > Create a new file called ser.py and paste the code in “ser.py” provided inside the drive link > Run this code(type “python ser.py” in the terminal of that folder and hit enter) only after running your Arduino IDE code 
 Note: Sometimes while running the ser.py it might throw some error about data format, it’s okay, it only happens because of the Connection Confirmation Byte Strings that are sent before the actual data, try running the code using the same command at least 6-7 times till it runs

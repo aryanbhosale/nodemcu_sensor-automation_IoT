@@ -2,8 +2,10 @@
 Interfacing NodeMCU v3(ESP8266) with MPU6050 (IMU sensor with acceleration and gyroscope along with temperature) and DS18B20 (temperature sensor)
 
 
+This guide covers 3 methods of logging sensor data from ESP8266 to Spreadsheets namely the Google Sheets Method and the Microsoft Excel Method, first using Serial UART Protocol and then using the UDP Protocol for Communication
+
 Resource Link: https://drive.google.com/drive/folders/1sUM9tPUtah8djTZy5WYI-h7uo4lOehVA?usp=drive_link
-	This is a link with all the necessary files that are used in this project
+This is a link with all the necessary files that are used in this project for Google Sheets Method and the Excel Sheet Method using UART Serial Programming, The files for the Excel Sheet Method using UDP Protocol will be given at a later stage in this documentation
 
 Downloading the Arduino IDE
 We will be using the Arduino IDE 2 for this project
@@ -33,7 +35,7 @@ Takes at least 2 seconds to log new sensor data in its cells
 Uses the Google Spreadsheets Apps Script to write JavaScript code to allow the automation of logging external data
 Can view sensor data after the code stops running, real time viewing not possible
 Is faster than Google Sheets Method, takes less than 2 seconds to log data in its cells
-Uses Serial Communication using a UDP web server to automate logging external data
+Uses UART Serial Communication and/or a UDP web server to automate logging external data
 
 
 
@@ -56,7 +58,7 @@ Connect the Signal Pin(yellow) from DS18B20 Temperature Sensor to D3(GPIO0) inst
 
 Run the code by clicking the rightward arrow on the top-left of the screen next to the verify icon which you’d clicked before to check for errors, wait till it finishes booting by 100%, then go to your Google Sheets, you will be able to see real time updates from the ESP8266 of the sensor data
 
-E. The Microsoft Excel Method
+E. The Microsoft Excel Method(Serial UART Protocol)
 
 Installing important libraries:Open the command line(Type cmd after pressing the windows icon and hit enter) > 
 i. Type “pip install python-time” and hit enter
@@ -71,6 +73,20 @@ Note: Sometimes while running the ser.py it might throw some error about data fo
 
 You will see a new file being created in that folder which you just created with all the necessary data in it once you stop the python code
 
-DO NOT OPEN THE FILE WHILE THE PROGRAM IS RUNNING, IT MIGHT LEAD TO ERRORS
+DO NOT OPEN THE FILE WHILE THE PROGRAM IS RUNNING, IT MIGHT LEAD TO ERRORS, THIS WARNING STANDS EVEN FOR THE UDP METHOD USING EXCEL SHEETS
 
 
+F. The Microsoft Excel Method(Serial UART Protocol)
+Reference link : https://drive.google.com/drive/folders/10YTF-ER0DhpnsXwkqN8KLsFoz7d8Dj0g?usp=sharing
+
+Installing important libraries:Open the command line(Type cmd after pressing the windows icon and hit enter) > 
+i. Type “pip install python-time” and hit enter
+ii. Type “pip install pyserial” and hit enter
+iii. Type “pip install pandas” and hit enter
+iv. Type “pip install openpyxl” and hit enter
+v. Type “pip install sockets” and hit enter
+
+Go to Arduino IDE and paste the code mentioned in “excel_udp.ino” in the drive link provided
+Here there are only 3 changes in the code at lines 32 and 33 where you have to replace the text inside the double quotes to your WiFi/Hotspot name and password where it’s mentioned, and at line 218 where you have to type the IP address of your laptop while it’s connected to the WiFi/Hotspot mentioned above. You can find this by going to Settings > Network and Internet > WiFi > Manage Known Networks > Click on Your WiFi name which you’re connected to > Scroll down to find IPV4 address, copy it and paste it in line 218. Leave the port “4210” unchanged.
+Click on the tick mark icon on the top-left of the screen to check the code for errors, once confirmed that the code is error-free, creat a folder on your Desktop screen > Go inside that folder > Create a new file called ser.py and paste the code in “udp.py” provided inside the drive link > Run this code(type “python udp.py” in the terminal of that folder and hit enter) only after running your Arduino IDE code 
+You will see a new file being created in that folder which you just created with all the necessary data in it once you stop the python code
